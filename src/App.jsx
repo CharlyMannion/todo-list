@@ -20,12 +20,20 @@ class App extends React.Component {
         console.log(this.state)
     }
 
+    deleteTask = (task) => {
+        this.setState((prevState) => {
+            return {
+                tasks: prevState.tasks.filter(element => element !== task)
+            }
+        })
+    }
+
     render() {
         return (
             <div className='App'>
             <h1>Todo List</h1>
-            <TaskList tasks={this.state.tasks}/>  
-            <TaskAdder addTask={this.addTask}/>  
+            <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask}/>  
+            <TaskAdder addTask={this.addTask}/> 
             </div> 
             );
     }

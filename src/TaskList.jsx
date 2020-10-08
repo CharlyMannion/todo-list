@@ -11,6 +11,8 @@ const TaskList = (props) => {
                             {task}
                             <br/>
                             {date}
+                            <br/>
+                            <button onSubmit={}>Delete Task</button>
                         </p>
                     </li>
                 );
