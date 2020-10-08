@@ -4,11 +4,11 @@ const TaskList = (props) => {
     console.log(props, '<----------- PROPS');
     return (
         <ul>
-            {props.tasks.map(({name, date}) => {
+            {props.tasks.map(({task, date}) => {
                 return (
-                    <li key={name}>
+                    <li key={task}>
                         <p>
-                            {name}
+                            {task}
                             <br/>
                             {date}
                         </p>
