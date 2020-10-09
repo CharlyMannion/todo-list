@@ -6,8 +6,15 @@ const TaskSorter = (props) => {
         props.sortTasks();
     }
 
+    const handleSortByDate = () => {
+        props.sortTaskByDate();
+    }
+
     return (
-        <button onClick={handleSort}>Sort Tasks</button>
+        <div>
+            <button onClick={handleSort}>Sort Alphabetically</button>
+            <button onClick={handleSortByDate}>Sort By Date</button>
+        </div>
     )
 }
 

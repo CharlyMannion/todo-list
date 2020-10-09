@@ -41,11 +41,33 @@ class App extends React.Component {
         })
     }
 
+    sortByDate = () => {
+        this.setState((prevState) => {
+            const newArr = [...prevState.tasks];
+            const mappedArr = newArr.map((element) => {
+                const obj = {}
+                obj.task = element.task;
+                obj.date = new Date(element.date);
+                return obj;
+            })
+            const sortArr = mappedArr.sort((a, b) =>  a.date - b.date);
+            const mapAgainArr = sortArr.map((element) => {
+                const obj = {}
+                obj.task = element.task;
+                obj.date = element.date.toISOString().substring(0, 10);
+                return obj;
+            })
+            return {
+                tasks: mapAgainArr
+            };
+        })
+    }
+
     render() {
         return (
             <div className='App'>
             <h1>Todo List</h1>
-            <TaskSorter sortTasks={this.sortTasks}/>
+            <TaskSorter sortTasks={this.sortTasks} sortTaskByDate={this.sortByDate}/>
             <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask}/>  
             <TaskAdder addTask={this.addTask}/> 
             </div> 
