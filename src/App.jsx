@@ -1,14 +1,15 @@
 import React from 'react';
 import TaskList from './TaskList.jsx';
 import TaskAdder from './TaskAdder.jsx';
+import TaskSorter from './TaskSorter'
 import './App.css';
 
 class App extends React.Component {
     state = {
         tasks: [
-        {task: 'task 1', date: '10/10/2020'},
-        {task: 'task 2', date: '12/11/2020'},
-        {task: 'task 3', date: '09/10/2020'}
+        {task: 'e task 1', date: '2020-10-10'},
+        {task: 'd task 2', date: '2020-10-31'},
+        {task: 'c task 3', date: '2020-10-11'}
     ]}
 
     addTask = (task) => {
@@ -21,30 +22,32 @@ class App extends React.Component {
 
     deleteTask = (task) => {
         this.setState((prevState) => {
-            console.log(task)
-            console.log(prevState, '<---- previous state')
             const newState = prevState.tasks.filter(element => {
-                console.log(element)
                 return element.task !== task
             })
-            console.log(newState, '<--- task deleted state')
             return {
                 tasks: newState  
             }
         })
     }
 
-    saveTasks = ( {toDoData} ) => {
-        
+    sortTasks = () => {
+        this.setState((prevState) => {
+            const newArr = [...prevState.tasks];
+            const sortedArr = newArr.sort((a, b) => (a.task > b.task) ? 1 : -1);
+            return {
+                tasks: sortedArr
+            };
+        })
     }
 
     render() {
         return (
             <div className='App'>
             <h1>Todo List</h1>
+            <TaskSorter sortTasks={this.sortTasks}/>
             <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask}/>  
             <TaskAdder addTask={this.addTask}/> 
-            <TaskSaver saveTasks={this.saveTasks} toDoData={this.state}/>
             </div> 
             );
     }

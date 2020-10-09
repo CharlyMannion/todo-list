@@ -38,7 +38,7 @@ class TaskAdder extends React.Component {
                 <label htmlFor='date'>
                     Date:
                 </label>
-                <input id="date" name="date" onChange={this.handleChange} value={this.state.date}/>          
+                <input type="date" id="date" name="date" onChange={this.handleChange} value={this.state.date}/>          
                 <button>Submit new Task</button>
             </form>
         )

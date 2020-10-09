@@ -1,11 +1,13 @@
 import React from 'react';
 
 const TaskList = (props) => {
+
     const handleDelete = (event) => {
         const taskToDelete = event.target.name
         console.log(taskToDelete)
         props.deleteTask(taskToDelete);
     }
+    
     return (
         <ul>
             {props.tasks.map(({task, date}) => {
