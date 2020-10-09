@@ -17,15 +17,25 @@ class App extends React.Component {
                 tasks: [...prevState.tasks, task]
             }
         })
-        console.log(this.state)
     }
 
     deleteTask = (task) => {
         this.setState((prevState) => {
+            console.log(task)
+            console.log(prevState, '<---- previous state')
+            const newState = prevState.tasks.filter(element => {
+                console.log(element)
+                return element.task !== task
+            })
+            console.log(newState, '<--- task deleted state')
             return {
-                tasks: prevState.tasks.filter(element => element !== task)
+                tasks: newState  
             }
         })
+    }
+
+    saveTasks = ( {toDoData} ) => {
+        
     }
 
     render() {
@@ -34,6 +44,7 @@ class App extends React.Component {
             <h1>Todo List</h1>
             <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask}/>  
             <TaskAdder addTask={this.addTask}/> 
+            <TaskSaver saveTasks={this.saveTasks} toDoData={this.state}/>
             </div> 
             );
     }

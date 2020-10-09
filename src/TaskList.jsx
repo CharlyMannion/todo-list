@@ -1,7 +1,11 @@
 import React from 'react';
 
 const TaskList = (props) => {
-    console.log(props, '<----------- PROPS');
+    const handleDelete = (event) => {
+        const taskToDelete = event.target.name
+        console.log(taskToDelete)
+        props.deleteTask(taskToDelete);
+    }
     return (
         <ul>
             {props.tasks.map(({task, date}) => {
@@ -12,7 +16,7 @@ const TaskList = (props) => {
                             <br/>
                             {date}
                             <br/>
-                            <button onSubmit={}>Delete Task</button>
+                            <button onClick={handleDelete} name={task}>Delete Task</button>
                         </p>
                     </li>
                 );

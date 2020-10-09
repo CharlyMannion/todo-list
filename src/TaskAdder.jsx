@@ -17,7 +17,6 @@ class TaskAdder extends React.Component {
     }
 
     render() {
-        console.log(this.state, "<-------- STATE IN TASK ADDER")
         return (
             <form onSubmit={(event) => {
                 event.preventDefault();
