@@ -65,11 +65,12 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className='App'>
+            <div className='App bg-image'>
             <h1>Todo List</h1>
             <TaskSorter sortTasks={this.sortTasks} sortTaskByDate={this.sortByDate}/>
             <TaskList tasks={this.state.tasks} deleteTask={this.deleteTask}/>  
             <TaskAdder addTask={this.addTask}/> 
+            <p className="statement">Graphic design is my passion...</p>
             </div> 
             );
     }
